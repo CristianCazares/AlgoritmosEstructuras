@@ -1,3 +1,9 @@
+/*
+    Author: Cristian Javier Cázares Molina
+    Date:   November 12th 2021
+    
+    Hashing by inserting using chaining and quadratic probing
+*/
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -13,13 +19,17 @@ class Hash{
             table = vector<int>(size);
         }
 
-        //Hash function.
+        //Hash function. For demonstration purposes prints the key and the hash generates.
         int genHash(int key){
             cout << "  H(" << key << ")=" << key % size <<  " " << endl;
             return key % size;
         }
+        //Discrete alternative for Hash function. Does not print.
+        int genHashDiscrete(int key){
+            return key % size;
+        }
 
-
+        //Complexity: O(n)
         void insertChain(int key){
             //Insert to hash if it is not full
             if(inserted < size){
@@ -63,6 +73,7 @@ class Hash{
             }
         }
 
+        //Complexity: O(n)
         void insertQuadratic(int key){
             vector<bool> visited(size, false); //Keep track of visited index.
 
@@ -85,7 +96,7 @@ class Hash{
                     
                     //If it the last index was collided, move to the next one.
                     if(collisioned){
-                        iaux = (pos + collisions*collisions);
+                        iaux = (genHashDiscrete(pos + collisions*collisions));
                         collisioned = false;
                     } //(Never applies for the first try)
                     
@@ -173,6 +184,7 @@ int main(){
         https://media.geeksforgeeks.org/wp-content/uploads/20200421211818/Hashing3.png*/
     cout << "===Test 3:" << endl ;
     Hash hash3(7);
+    cout << " Keys to insert: " << endl;
     hash3.insertQuadratic(50);
     hash3.insertQuadratic(700);
     hash3.insertQuadratic(76);
@@ -188,8 +200,9 @@ int main(){
     /*Test 4 CHAIN.
       Same as test 3 but using chain.
     */
-    cout << "===Test 3:" << endl ;
+    cout << "===Test 4:" << endl ;
     Hash hash4(7);
+    cout << " Keys to insert: " << endl;
     hash4.insertChain(50);
     hash4.insertChain(700);
     hash4.insertChain(76);
@@ -199,7 +212,6 @@ int main(){
     hash4.insertChain(101);
     cout << "Result:" << endl;
     hash4.showTable();
-    cout << endl << endl;
 
     return 0;
 }
