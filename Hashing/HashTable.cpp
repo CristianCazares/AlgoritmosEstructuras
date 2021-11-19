@@ -15,6 +15,7 @@ class Hash{
 
         //Hash function.
         int genHash(int key){
+            cout << "  H(" << key << ")=" << key % size <<  " " << endl;
             return key % size;
         }
 
@@ -124,10 +125,12 @@ class Hash{
 };
 
 int main(){
-    /*=Test 1
-      Example provided by M.C. Luis Ricardo Peña Llamas: */
-    cout << "Test 1:"
+    /*Test 1 CHAIN
+      Fisrt 7 elements of example provided by M.C. Luis Ricardo Peña Llamas:
+        https://raw.githubusercontent.com/CristianCazares/AlgoritmosEstructuras/main/Hashing/img/Test1.png*/
+    cout << "===Test 1:" << endl;
     Hash hash(11);
+    cout << " Keys to insert: " << endl;
     hash.insertChain(33);
     hash.insertChain(17);
     hash.insertChain(7);
@@ -139,38 +142,64 @@ int main(){
     hash.insertChain(9);
     hash.insertChain(78);
     hash.insertChain(68);
+    cout << "Result:" << endl;
     hash.showTable();
     cout << endl << endl;
 
-    /*=TEST 2
-      Quadratic prove example from Geeks for geeks: https://media.geeksforgeeks.org/wp-content/uploads/20200421211818/Hashing3.png*/
-    cout << "Test 2:"
-    Hash hash1(7);
-    hash1.insertQuadratic(50);
-    hash1.showTable();
-    hash1.insertQuadratic(700);
-    hash1.insertQuadratic(76);
-    hash1.showTable();
-    hash1.insertQuadratic(85);
-    hash1.showTable();
-    hash1.insertQuadratic(92);
-    hash1.showTable();
-    hash1.insertQuadratic(73);
-    hash1.insertQuadratic(101);
-    hash1.showTable();
-    /*
+    /*Test 2 QUADRATIC.
+      Same as test 1 but using quadratic.
     */
-    /*
-    hash.insertChain(17);
-    hash.insertChain(7);
-    hash.insertChain(6);
-    hash.insertChain(28);
-    hash.insertChain(52);
-    hash.insertChain(76);
-    hash.insertChain(35);
-    hash.insertChain(9);
-    hash.insertChain(78);
-    hash.insertChain(68);*/
+    cout << "===Test 2:" << endl;
+    Hash hash2(11);
+    cout << " Keys to insert: " << endl;
+    hash2.insertQuadratic(33);
+    hash2.insertQuadratic(17);
+    hash2.insertQuadratic(7);
+    hash2.insertQuadratic(6);
+    hash2.insertQuadratic(28);
+    hash2.insertQuadratic(52);
+    hash2.insertQuadratic(76);
+    hash2.insertQuadratic(35);
+    hash2.insertQuadratic(9);
+    hash2.insertQuadratic(78);
+    hash2.insertQuadratic(68);
+    cout << "Result:" << endl;
+    hash2.showTable();
+    cout << endl << endl;
+
+
+    /*Test 3 QUADRATIC
+      Quadratic prove example from Geeks for geeks:
+        https://media.geeksforgeeks.org/wp-content/uploads/20200421211818/Hashing3.png*/
+    cout << "===Test 3:" << endl ;
+    Hash hash3(7);
+    hash3.insertQuadratic(50);
+    hash3.insertQuadratic(700);
+    hash3.insertQuadratic(76);
+    hash3.insertQuadratic(85);
+    hash3.insertQuadratic(92);
+    hash3.insertQuadratic(73);
+    hash3.insertQuadratic(101);
+    cout << "Result:" << endl;
+    hash3.showTable();
+    cout << endl << endl;
+
+
+    /*Test 4 CHAIN.
+      Same as test 3 but using chain.
+    */
+    cout << "===Test 3:" << endl ;
+    Hash hash4(7);
+    hash4.insertChain(50);
+    hash4.insertChain(700);
+    hash4.insertChain(76);
+    hash4.insertChain(85);
+    hash4.insertChain(92);
+    hash4.insertChain(73);
+    hash4.insertChain(101);
+    cout << "Result:" << endl;
+    hash4.showTable();
+    cout << endl << endl;
 
     return 0;
 }
