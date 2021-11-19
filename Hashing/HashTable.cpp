@@ -124,6 +124,8 @@ class Hash{
 };
 
 int main(){
+    /*=Test 1
+      Example provided by M.C. Luis Ricardo Peña Llamas: */
     cout << "Test 1:"
     Hash hash(11);
     hash.insertChain(33);
@@ -140,6 +142,8 @@ int main(){
     hash.showTable();
     cout << endl << endl;
 
+    /*=TEST 2
+      Quadratic prove example from Geeks for geeks: https://media.geeksforgeeks.org/wp-content/uploads/20200421211818/Hashing3.png*/
     cout << "Test 2:"
     Hash hash1(7);
     hash1.insertQuadratic(50);
